@@ -15,10 +15,30 @@ Tips
 - Don't forget to clear interval once it's done running
 - It's perfectly okay to prompt a user for details while other stuff (i.e.the interval) is running
 - Keep your code separated into functions for easier readability later
-
-Challenge
-- Prompt the user to enter a property (e.g. 'email' or 'address') and then console.log a list of name - given property. E.g. for email it would look along the lines of: 
-
-Bob Marley - bob@marley.com
-Steven Hawking - hawk@this.co.uk
 */
+
+console.log("users: ", users);
+console.log("todos: ", todos);
+
+let letter = prompt("Give me a letter please!");
+
+let letterUsers = users.filter((user) => user.name.includes(letter));
+
+console.log(letterUsers);
+
+let userNames = letterUsers.map((letterUser) => letterUser.name);
+
+let index = 0;
+let intervalId = setInterval(function () {
+  console.log(`Hi ${userNames[index]}!`);
+  index++;
+  if (index === userNames.length) clearInterval(intervalId);
+}, 2000);
+
+let userId = Number(prompt("What is your id?"));
+
+todos
+  .filter((todo) => todo.userId === userId)
+  .filter(function (todo) {
+    if (!todo.completed) console.log(todo.title);
+  });
